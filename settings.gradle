@@ -1,0 +1,5 @@
+rootProject.name = 'msa-saga-demo'
+
+include 'orderservice'
+include 'order-service'
+

@@ -1,0 +1,28 @@
+buildscript{
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+       // classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+       // classpath "io.spring.gradle:dependency-management-plugin:${springDependencyManagementPluginVersion}"
+    }
+}
+
+subprojects {
+    apply plugin: "java"
+    apply plugin: "pmd"
+
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+
+    group = "org.example"
+
+    repositories {
+        mavenCentral()
+    }
+
+}
+
+
+
+
