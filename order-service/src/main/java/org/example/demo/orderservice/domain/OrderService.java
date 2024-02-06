@@ -1,6 +1,8 @@
 package org.example.demo.orderservice.domain;
 
 import lombok.RequiredArgsConstructor;
+import org.example.demo.orderservice.api.events.OrderDetails;
+import org.example.demo.orderservice.api.events.OrderLineItem;
 import org.example.demo.orderservice.exception.InvalidMenuItemIdException;
 import org.example.demo.orderservice.exception.RestaurantNotFoundException;
 import org.example.demo.orderservice.messaging.OrderEventProducer;
@@ -28,7 +30,8 @@ public class OrderService {
 
         Order order = new Order(consumerId, restaurantId, orderLineItems);
         orderRepository.save(order);
-        
+
+        new OrderDetails(consumerId, restaurantId, orderLineItems, order.getOrderTotalPrice());
 
         return order;
     }

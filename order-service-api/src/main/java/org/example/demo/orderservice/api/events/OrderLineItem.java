@@ -1,7 +1,8 @@
-package org.example.demo.orderservice.domain;
+package org.example.demo.orderservice.api.events;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import org.example.demo.common.Money;
 
 import javax.persistence.*;
 
@@ -12,6 +13,10 @@ public class OrderLineItem {
 
     private String menuItemId;
     private String name;
-    private int price;
+    private Money price;
     private int quantity;
+
+    public Money getTotal(){
+        return price.multiply(quantity);
+    }
 }

@@ -3,6 +3,7 @@ package org.example.demo.orderservice.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.example.demo.common.Money;
 
 import javax.persistence.Embeddable;
 
@@ -13,5 +14,5 @@ import javax.persistence.Embeddable;
 public class MenuItem {
     private Long id;
     private String name;
-    private int price;
+    private Money price;
 }
