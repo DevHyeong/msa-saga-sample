@@ -32,3 +32,6 @@
 
 ### 레퍼런스
 - https://github.com/gilbutITbook/007035/tree/master
+- https://devocean.sk.com/blog/techBoardDetail.do?ID=164016
+- https://github.com/confluentinc/cp-all-in-one/blob/7.5.3-post/cp-all-in-one/docker-compose.yml
+- https://techblog.woowahan.com/7835/
