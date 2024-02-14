@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.demo.common.Money;
 
-import javax.persistence.Embeddable;
+import javax.persistence.*;
 
 @Embeddable
 @NoArgsConstructor
@@ -14,5 +14,7 @@ import javax.persistence.Embeddable;
 public class MenuItem {
     private Long id;
     private String name;
+    @Embedded
+    @AttributeOverrides(@AttributeOverride(name="amount", column=@Column(name="price")))
     private Money price;
 }

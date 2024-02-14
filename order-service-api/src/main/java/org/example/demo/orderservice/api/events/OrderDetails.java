@@ -16,4 +16,14 @@ public class OrderDetails {
     private Long restaurantId;
     private List<OrderLineItem> lineItems;
     private Money orderTotal;
+
+    @Override
+    public String toString() {
+        return "OrderDetails{" +
+                "consumerId=" + consumerId +
+                ", restaurantId=" + restaurantId +
+                ", lineItems=" + lineItems +
+                ", orderTotal=" + orderTotal +
+                '}';
+    }
 }

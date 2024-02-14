@@ -5,6 +5,7 @@ import org.example.demo.common.Money;
 import org.example.demo.orderservice.api.events.OrderLineItem;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,7 +18,10 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private OrderState orderState;
-    private List<OrderLineItem> orderLineItems;
+
+    @ElementCollection
+    @CollectionTable(name = "order_line_items")
+    private List<OrderLineItem> orderLineItems = new ArrayList<>();
     private Long consumerId;
     private Long restaurantId;
 
