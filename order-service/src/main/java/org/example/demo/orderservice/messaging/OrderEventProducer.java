@@ -12,7 +12,6 @@ import org.springframework.util.concurrent.ListenableFutureCallback;
 @RequiredArgsConstructor
 public class OrderEventProducer {
     private final KafkaTemplate kafkaTemplate;
-
     public void order(String topic, OrderDetails orderDetails){
         ListenableFuture<SendResult<Integer, OrderDetails>> sendResult = kafkaTemplate.send(topic, orderDetails);
         sendResult.addCallback(new ListenableFutureCallback<SendResult<Integer, OrderDetails>>() {

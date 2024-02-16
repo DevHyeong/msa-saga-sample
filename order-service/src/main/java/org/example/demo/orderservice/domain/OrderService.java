@@ -29,8 +29,6 @@ public class OrderService {
     private final RestaurantRepository restaurantRepository;
     /**
      *  TO DO: 트랜잭셔널 메시징을 활용하여 DB와 메시징 생성을 하나의 트랜잭션 단위로 묶어야함.
-     *  writeValueAsString Money객체 serialize가 안됨(getter 없어서)
-     *  하지만 getter 추가시 db 에러가 발생
      */
     @Transactional
     public Order createOrder(Long consumerId, Long restaurantId,
@@ -43,12 +41,10 @@ public class OrderService {
         Order order = new Order(consumerId, restaurantId, orderLineItems);
         orderRepository.save(order);
 
-        System.out.println(order.getOrderTotalPrice());
         OrderDetails orderDetails = new OrderDetails(consumerId, restaurantId, orderLineItems, order.getOrderTotalPrice());
         try {
             String attributes = objectMapper.writeValueAsString(orderDetails);
             OrderEvent orderEvent = new OrderEvent(OrderEventType.CREATE, order.getId(), attributes);
-            System.out.println(attributes);
             orderEventRepository.save(orderEvent);
             eventPublisher.publishEvent(orderEvent);
         } catch (JsonProcessingException e) {

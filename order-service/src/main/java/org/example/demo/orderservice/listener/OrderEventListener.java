@@ -20,7 +20,6 @@ public class OrderEventListener {
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     public void handleOrderEvent(OrderEvent orderEvent){
         try {
-            log.info("handleOrderEvent");
             OrderDetails orderDetails = objectMapper.readValue(orderEvent.getAttributes(), OrderDetails.class);
             orderEventProducer.order("order", orderDetails);
         } catch (JsonProcessingException e) {
