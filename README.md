@@ -30,6 +30,18 @@
 - 저자는 저자가 개발한 이벤추에이트 트램을 사용했지만 특정 프레임워크에 의존하지 않고 간단한 샘플코드를 작성하기 위함이니 이벤추에이트 트램을 제외하여 개발
 
 
+### 도커 카프카 실행 명령어
+```shell
+docker-compose -f docker-compose.yml up -d # docker-compose 실행
+docker-compose exec [카프카서버이름] kafka-topics --create --topic [토픽이름] --bootstrap-server [카프가서버이름:포트] --replication-factor 3 --partitions 2 # 토픽생성
+
+docker-compose exec [카프카서버이름] bash # 컨테이너 내부 접속
+kafka-console-consumer --topic [토픽이름] --bootstrap-server [카프카서버이름:포트] # 컨슈머 실행
+
+docker-compose down #docker-compose 컨테이너 내리기
+```
+
+
 ### 레퍼런스
 - https://github.com/gilbutITbook/007035/tree/master
 - https://devocean.sk.com/blog/techBoardDetail.do?ID=164016
