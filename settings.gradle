@@ -3,4 +3,5 @@ rootProject.name = 'msa-saga-demo'
 include 'order-service'
 include 'order-service-api'
 include 'common'
+include 'consumer-service'
 
